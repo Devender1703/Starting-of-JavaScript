@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+<head> 
+
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+
+</head>
+
+<body>
+
+    <h1>Number guessing game</h1>
+    <p> We have selected a random number between 1 and 100. 
+        See if you can guess it in 10 turns or fewer.
+        We'll tell you if your guess was too high or too low.</p>
+    <br>
+    Enter your guess : -
+    <input type = "text" class = "guessField">
+    <input type = "submit" value = "submit guess" class = "guessSubmit">     
+    
+    <div>
+    <p class = "checkresult"> </p>
+    <p class = "lowerhigh"> </p>
+    <p class = "lastguess"></p>
+    </div>
+    
+    <script>
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+
+        const check = document.querySelector('.checkresult');
+        const lowORhigh = document.querySelector('.lowerhigh');
+        const ltGuess = document.querySelector('.lastguess');
+        
+        const guessField = document.querySelector('.guessField');
+        const guessSubmit = document.querySelector('.guessSubmit');
+
+        function ResetGame()
+        {
+            ltGuess.textContent = '';
+            lowORhigh.textContent = '';
+        }
+
+        function CheckGuess()
+        {
+            let userGuess = Number(guessField.value);
+            
+            if(userGuess === randomNumber)
+            {
+                check.textContent = 'Congratulations ! You have guessed the right number';
+                check.style.backgroundColor = 'green';
+                ResetGame();
+            }
+            else if(userGuess < randomNumber)
+            {
+                check.textContent = 'Your answer is wrong';
+                check.style.backgroundColor = 'red';
+                lowORhigh.textContent = 'Your answer is too low';
+                ltGuess.textContent += String(userGuess) + ' '; 
+            }
+            else
+            {
+                check.textContent = 'your answer is wrong';
+                check.style.backgroundColor = 'blue';
+                lowORhigh.textContent = 'your answer is too high';
+                ltGuess.textContent += String(userGuess) + ' ';
+            }
+            guessField.value = '';
+            guessField.focus();
+        }
+
+        guessSubmit.addEventListener('click', CheckGuess);
+    </script>
+</body>
+
+</html>
