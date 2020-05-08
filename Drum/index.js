@@ -1,5 +1,3 @@
-const back = document.querySelector("body");
-
 function random(num)
 {
     return Math.floor(Math.random() * (num + 1));
