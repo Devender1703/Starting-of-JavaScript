@@ -1,0 +1,18 @@
+:root {
+    --bb-color : #ffc600;
+    --spacing : 10px;
+    --blurr : 0px;
+}
+
+body
+{
+    text-align: center;
+    background-color: var(--bb-color);
+}
+
+img
+{
+    padding: var(--spacing);
+    filter: blur(var(--blurr));
+}
+
